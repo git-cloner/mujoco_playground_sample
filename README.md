@@ -67,6 +67,8 @@ jupyter nbconvert --to python dm_control_suite.ipynb
 https://research.mels.ai/ide?mels=UnitreeGo1.qkazy
 ```
 
+## 作者图书
 
+![图书](https://gitclone.com/download1/llm-dev/llm-dev.png)
 
-
+![图书](https://gitclone.com/download1/ai-agent/agent-dev1.png)

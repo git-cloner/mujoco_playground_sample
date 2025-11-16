@@ -1,9 +1,4 @@
-import distutils.util
 import os
-import itertools
-import time
-from typing import Callable, List, NamedTuple, Optional, Union
-from typing import Any, Dict, Sequence, Tuple
 import mediapy as media
 from datetime import datetime
 import functools
@@ -11,30 +6,13 @@ import functools
 # 导入brax前，配置 MuJoCo 使用 EGL 渲染后端（需要 GPU）
 os.environ['MUJOCO_GL'] = 'egl' 
 
-from brax import base
-from brax import envs
-from brax import math
-from brax.base import Base, Motion, Transform
-from brax.base import State as PipelineState
-from brax.envs.base import Env, PipelineEnv, State
-from brax.io import html, mjcf, model
-from brax.mjx.base import State as MjxState
 from brax.training.agents.ppo import networks as ppo_networks
 from brax.training.agents.ppo import train as ppo
-from brax.training.agents.sac import networks as sac_networks
-from brax.training.agents.sac import train as sac
-from etils import epath
-from flax import struct
-from flax.training import orbax_utils
-from IPython.display import HTML, clear_output
+from IPython.display import clear_output
 import jax
 from jax import numpy as jp
 from matplotlib import pyplot as plt
-from ml_collections import config_dict
-import mujoco
-from mujoco import mjx
 import numpy as np
-from orbax import checkpoint as ocp
 import cv2
 from mujoco_playground import registry
 from mujoco_playground.config import dm_control_suite_params
@@ -78,6 +56,7 @@ def init_env() :
 	# CartPole 任务：CartPole（或称为倒立摆）是一种经典的强化学习基准任务，
 	# 目的是通过移动一个底座来平衡一个在顶部的杆子
 	# 会触发 git clone https://github.com/deepmind/mujoco_menagerie.git
+	# 如果报128错误，多试几次
 	env = registry.load('CartpoleBalance')
 	env_cfg = registry.get_default_config('CartpoleBalance')
 	
@@ -179,6 +158,9 @@ def Train() :
 	saveVideo(frames)
 
 if __name__ == "__main__":
+	# 环境初始化
 	init_env()
+	# 演示运行
 	Rollout()
+	# 训练
 	Train()

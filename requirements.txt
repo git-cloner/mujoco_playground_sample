@@ -1,7 +1,8 @@
-mujoco==3.2.7
-mujoco_mjx==3.2.7
-brax==0.12.1
-mediapy==1.2.2
-playground==0.0.3
-opencv-python==4.11.0.86
-numpy==2.2.2
+mujoco==3.3.7
+mujoco_mjx==3.3.7
+brax==0.13.0
+mediapy==1.2.4
+playground==0.0.5
+opencv-python==4.12.0.88
+numpy==2.2.6
+jax[cuda12]==0.8.0

@@ -41,22 +41,14 @@ git clone https://github.com/git-cloner/mujoco_playground_sample
 cd mujoco_playground_sample
 # 安装依赖库
 pip install -r requirements.txt \
--i https://mirrors.aliyun.com/pypi/simple
-```
-
-### 4、安装JAX GPU版
-
-```shell
-# 安装jax for CUDA
-pip install "jax[cuda12]" -f \
-https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-# 验证jax for CUDA安装
-python -c "import jax; print(jax.default_backend())" 
+-i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ## 三、运行测试程序
 
 ```shell
+# 解决“untimeError: Unable to load cuSPARSE. Is it installed?”问题
+unset LD_LIBRARY_PATH
 # 测试dm_control_suite
 CUDA_VISIBLE_DEVICES=0 python dm_control_suite.py
 # 测试运动
